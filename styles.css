@@ -223,3 +223,29 @@ h3{margin:0 0 6px;font-size:18px}
   h1{font-size:34px}
   .grid-3{grid-template-columns:1fr}
 }
+
+/* Logo background inside product cards */
+.product.card {
+  position: relative;
+  overflow: hidden;
+}
+
+.product.card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: url("./logo.png");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 120px;
+  opacity: 0.06; /* خفيف وفخم */
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* keep content above the logo */
+.product.card > * {
+  position: relative;
+  z-index: 1;
+}
+
