@@ -2,16 +2,18 @@
 <html lang="en">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>EG Store</title>
-  <link rel="stylesheet" href="styles.css" />
+
+  <!-- IMPORTANT: must be exactly this -->
+  <link rel="stylesheet" href="./styles.css" />
 </head>
 <body>
 
 <header class="header">
   <div class="container header-inner">
-    <a class="brand" href="index.html">
-      <img src="logo.png" class="brand-logo" alt="EG Store Logo" />
+    <a class="brand" href="./">
+      <img src="./logo.png" alt="EG Store Logo" class="brand-logo" />
       <div class="brand-text">
         <div class="brand-name">EG Store</div>
         <div class="brand-sub">Digital design services • Direct order</div>
@@ -19,9 +21,9 @@
     </a>
 
     <nav class="nav">
-      <a href="#services">Services</a>
       <a href="#packages">Packages</a>
       <a href="#contact">Contact</a>
+      <a href="./privacy.html">Privacy</a>
     </nav>
   </div>
 </header>
@@ -51,35 +53,11 @@
         <h3>How it works</h3>
         <ol class="steps">
           <li>Select a package.</li>
-          <li>Click <b>Buy Now</b> to show bank transfer details.</li>
-          <li>Complete the transfer and send confirmation.</li>
+          <li>Click <b>Buy Now</b> to show bank details.</li>
+          <li>Transfer and send confirmation.</li>
           <li>Receive files + revisions.</li>
         </ol>
-        <p class="muted small">
-          Bank transfer details appear in a pop-up after clicking Buy Now.
-        </p>
-      </div>
-    </div>
-  </section>
-
-  <section id="services" class="section">
-    <div class="container">
-      <h2>What I offer</h2>
-      <p class="muted">Branding, social media, Discord design, thumbnails, and print.</p>
-
-      <div class="grid-3">
-        <div class="card">
-          <h3>Branding</h3>
-          <p class="muted">Logos, brand identity, colors, typography & guidelines.</p>
-        </div>
-        <div class="card">
-          <h3>Social Media</h3>
-          <p class="muted">Posts, stories, ads, covers — optimized for engagement.</p>
-        </div>
-        <div class="card">
-          <h3>Community Design</h3>
-          <p class="muted">Discord branding: banners, icons, panels, role icons.</p>
-        </div>
+        <p class="muted small">Bank transfer details appear in a pop-up.</p>
       </div>
     </div>
   </section>
@@ -89,13 +67,11 @@
       <div class="section-head">
         <div>
           <h2>Packages</h2>
-          <p class="muted">Direct purchase via bank transfer details.</p>
+          <p class="muted">Direct order via bank transfer.</p>
         </div>
-        <a class="btn ghost small" href="#contact">Custom Quote</a>
       </div>
 
       <div class="grid-3">
-        <!-- 1 -->
         <article class="product card">
           <div class="top">
             <div>
@@ -110,10 +86,9 @@
             <li>PNG + JPG + transparent</li>
             <li>Delivery: 2–3 days</li>
           </ul>
-          <a class="btn full" href="#" onclick="openBank(event,'Logo Starter','50 USD')">Buy Now</a>
+          <a class="btn full" href="#" data-name="Logo Starter" data-price="50 USD">Buy Now</a>
         </article>
 
-        <!-- 2 -->
         <article class="product card">
           <div class="top">
             <div>
@@ -128,10 +103,9 @@
             <li>2 revisions</li>
             <li>Delivery: 2–4 days</li>
           </ul>
-          <a class="btn full" href="#" onclick="openBank(event,'Social Pack (10 Posts)','100 USD')">Buy Now</a>
+          <a class="btn full" href="#" data-name="Social Pack (10 Posts)" data-price="100 USD">Buy Now</a>
         </article>
 
-        <!-- 3 -->
         <article class="product card">
           <div class="top">
             <div>
@@ -146,73 +120,15 @@
             <li>Basic role icons</li>
             <li>Delivery: 2–5 days</li>
           </ul>
-          <a class="btn full" href="#" onclick="openBank(event,'Discord Server Design','80 USD')">Buy Now</a>
-        </article>
-
-        <!-- 4 -->
-        <article class="product card">
-          <div class="top">
-            <div>
-              <h3>Thumbnail (YouTube)</h3>
-              <p class="muted">High CTR thumbnail.</p>
-            </div>
-            <div class="price">15 USD</div>
-          </div>
-          <ul class="list">
-            <li>1 thumbnail</li>
-            <li>1 revision</li>
-            <li>Delivery: 12–24h</li>
-            <li>Mobile optimized</li>
-          </ul>
-          <a class="btn full" href="#" onclick="openBank(event,'Thumbnail (YouTube)','15 USD')">Buy Now</a>
-        </article>
-
-        <!-- 5 -->
-        <article class="product card">
-          <div class="top">
-            <div>
-              <h3>Business Card + Letterhead</h3>
-              <p class="muted">Print-ready stationery set.</p>
-            </div>
-            <div class="price">45 USD</div>
-          </div>
-          <ul class="list">
-            <li>Card (2 sides)</li>
-            <li>Letterhead</li>
-            <li>Print PDF</li>
-            <li>Delivery: 1–2 days</li>
-          </ul>
-          <a class="btn full" href="#" onclick="openBank(event,'Business Card + Letterhead','45 USD')">Buy Now</a>
-        </article>
-
-        <!-- 6 -->
-        <article class="product card best">
-          <div class="badge">Best value</div>
-          <div class="top">
-            <div>
-              <h3>Brand Kit (Pro)</h3>
-              <p class="muted">Full identity package.</p>
-            </div>
-            <div class="price">180 USD</div>
-          </div>
-          <ul class="list">
-            <li>3 logo concepts</li>
-            <li>Colors + typography</li>
-            <li>Mini brand guide</li>
-            <li>Avatar + cover</li>
-          </ul>
-          <a class="btn full" href="#" onclick="openBank(event,'Brand Kit (Pro)','180 USD')">Buy Now</a>
+          <a class="btn full" href="#" data-name="Discord Server Design" data-price="80 USD">Buy Now</a>
         </article>
       </div>
 
       <div class="policy-bar">
-        <a href="privacy.html">Privacy</a>
-        <span>•</span>
-        <a href="terms.html">Terms</a>
-        <span>•</span>
-        <a href="refund.html">Refund</a>
-        <span>•</span>
-        <a href="contact.html">Contact</a>
+        <a href="./privacy.html">Privacy</a><span>•</span>
+        <a href="./terms.html">Terms</a><span>•</span>
+        <a href="./refund.html">Refund</a><span>•</span>
+        <a href="./contact.html">Contact</a>
       </div>
     </div>
   </section>
@@ -221,6 +137,7 @@
     <div class="container">
       <h2>Contact</h2>
       <p class="muted">Send your requirements + references to start.</p>
+
       <div class="grid-3">
         <div class="card">
           <h3>Email</h3>
@@ -246,16 +163,16 @@
   </div>
 </footer>
 
-<!-- ===== Bank Transfer Modal ===== -->
-<div id="modalOverlay" class="overlay" onclick="closeBank()"></div>
+<!-- ===== Modal (Bank Transfer) ===== -->
+<div id="overlay" class="overlay" aria-hidden="true"></div>
 
-<div id="bankModal" class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+<div id="modal" class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle" aria-hidden="true">
   <div class="modal-top">
     <div>
       <h3 id="modalTitle">Bank Transfer Details</h3>
       <p class="muted small" id="modalSub">Transfer the amount using the details below</p>
     </div>
-    <button class="icon-btn" onclick="closeBank()" aria-label="Close">✕</button>
+    <button class="icon-btn" id="closeBtn" aria-label="Close">✕</button>
   </div>
 
   <div class="modal-body">
@@ -276,7 +193,7 @@
           <div class="label">IBAN</div>
           <div class="value mono" id="ibanText">EG210037002708181020671629935</div>
         </div>
-        <button class="btn ghost" onclick="copyText('ibanText','ibanStatus')">Copy</button>
+        <button class="btn ghost" type="button" id="copyIban">Copy</button>
       </div>
       <div class="status" id="ibanStatus"></div>
     </div>
@@ -287,68 +204,87 @@
           <div class="label">Account Number</div>
           <div class="value mono" id="accText">1020671629935</div>
         </div>
-        <button class="btn ghost" onclick="copyText('accText','accStatus')">Copy</button>
+        <button class="btn ghost" type="button" id="copyAcc">Copy</button>
       </div>
       <div class="status" id="accStatus"></div>
     </div>
 
     <p class="muted small note">
-      After transferring, send a screenshot of the transfer + your order details on WhatsApp or Email.
+      After transferring, send a screenshot of the transfer + your order details via WhatsApp or Email.
     </p>
   </div>
 
   <div class="modal-actions">
-    <button class="btn ghost full" onclick="closeBank()">Close</button>
+    <button class="btn ghost full" type="button" id="closeBtn2">Close</button>
   </div>
 </div>
 
 <script>
+  // Footer year
   document.getElementById("y").textContent = new Date().getFullYear();
 
-  function openBank(e, name, price) {
-    e.preventDefault();
-    document.getElementById("serviceName").textContent = name;
-    document.getElementById("servicePrice").textContent = price;
+  // Modal elements
+  const overlay = document.getElementById("overlay");
+  const modal   = document.getElementById("modal");
+  const serviceName = document.getElementById("serviceName");
+  const servicePrice = document.getElementById("servicePrice");
 
-    document.getElementById("ibanStatus").textContent = "";
-    document.getElementById("accStatus").textContent = "";
+  const ibanStatus = document.getElementById("ibanStatus");
+  const accStatus  = document.getElementById("accStatus");
 
-    document.getElementById("modalOverlay").classList.add("show");
-    document.getElementById("bankModal").classList.add("show");
+  function openModal(name, price){
+    serviceName.textContent = name;
+    servicePrice.textContent = price;
+    ibanStatus.textContent = "";
+    accStatus.textContent = "";
+
+    overlay.classList.add("show");
+    modal.classList.add("show");
+    overlay.setAttribute("aria-hidden","false");
+    modal.setAttribute("aria-hidden","false");
   }
 
-  function closeBank() {
-    document.getElementById("modalOverlay").classList.remove("show");
-    document.getElementById("bankModal").classList.remove("show");
+  function closeModal(){
+    overlay.classList.remove("show");
+    modal.classList.remove("show");
+    overlay.setAttribute("aria-hidden","true");
+    modal.setAttribute("aria-hidden","true");
   }
 
-  async function copyText(textId, statusId) {
-    const text = document.getElementById(textId).textContent.trim();
-    const status = document.getElementById(statusId);
+  // Buy buttons
+  document.querySelectorAll('a.btn.full[data-name]').forEach(btn=>{
+    btn.addEventListener("click", (e)=>{
+      e.preventDefault();
+      openModal(btn.dataset.name, btn.dataset.price);
+    });
+  });
 
-    try {
+  // Close actions
+  document.getElementById("closeBtn").addEventListener("click", closeModal);
+  document.getElementById("closeBtn2").addEventListener("click", closeModal);
+  overlay.addEventListener("click", closeModal);
+  document.addEventListener("keydown", (e)=>{ if(e.key === "Escape") closeModal(); });
+
+  // Copy helpers
+  async function copyFrom(id, statusEl){
+    const text = document.getElementById(id).textContent.trim();
+    try{
       await navigator.clipboard.writeText(text);
-      status.textContent = "Copied ✅";
-      setTimeout(() => status.textContent = "", 1500);
-    } catch (err) {
-      const temp = document.createElement("textarea");
-      temp.value = text;
-      document.body.appendChild(temp);
-      temp.select();
+      statusEl.textContent = "Copied ✅";
+    }catch(_){
+      const t = document.createElement("textarea");
+      t.value = text;
+      document.body.appendChild(t);
+      t.select();
       document.execCommand("copy");
-      document.body.removeChild(temp);
-      status.textContent = "Copied ✅";
-      setTimeout(() => status.textContent = "", 1500);
+      document.body.removeChild(t);
+      statusEl.textContent = "Copied ✅";
     }
+    setTimeout(()=> statusEl.textContent = "", 1200);
   }
 
-  document.addEventListener("keydown", function (e) {
-    if (e.key === "Escape") closeBank();
-  });
-
-  document.getElementById("bankModal").addEventListener("click", function (e) {
-    e.stopPropagation();
-  });
+  document.getElementById("copyIban").addEventListener("click", ()=>copyFrom("ibanText", ibanStatus));
+  document.getElementById("copyAcc").addEventListener("click", ()=>copyFrom("accText", accStatus));
 </script>
 
 </body>
