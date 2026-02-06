@@ -25,6 +25,7 @@
 
     <nav class="nav">
       <a href="#packages">Packages</a>
+      <a href="#about">About</a>
       <a href="#contact">Contact</a>
       <a href="./privacy.html">Privacy</a>
     </nav>
@@ -136,6 +137,40 @@
     </div>
   </section>
 
+  <!-- ===== About Me (ADDED ONLY) ===== -->
+  <section id="about" class="section">
+    <div class="container">
+      <div class="section-head">
+        <div>
+          <h2>About Me</h2>
+          <p class="muted">Who I am & how I work</p>
+        </div>
+      </div>
+
+      <div class="card">
+        <p class="lead">
+          I’m a freelance graphic designer specialized in branding, logo design,
+          social media visuals, and Discord server design.
+        </p>
+
+        <p class="muted">
+          I focus on clean, modern designs that help brands stand out.
+          Every project is handled personally with clear communication,
+          fast delivery, and revisions included.
+        </p>
+
+        <div class="chips">
+          <span class="chip">Branding</span>
+          <span class="chip">Logo Design</span>
+          <span class="chip">Social Media</span>
+          <span class="chip">Discord Design</span>
+          <span class="chip">Fast Delivery</span>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- ===== End About Me ===== -->
+
   <section id="contact" class="section">
     <div class="container">
       <h2>Contact</h2>
@@ -166,7 +201,129 @@
   </div>
 </footer>
 
-<!-- باقي الكود (Modal + JS) كما هو بدون أي تعديل -->
+<!-- ===== Modal (Bank Transfer) ===== -->
+<div id="overlay" class="overlay" aria-hidden="true"></div>
+
+<div id="modal" class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle" aria-hidden="true">
+  <div class="modal-top">
+    <div>
+      <h3 id="modalTitle">Bank Transfer Details</h3>
+      <p class="muted small" id="modalSub">Transfer the amount using the details below</p>
+    </div>
+    <button class="icon-btn" id="closeBtn" aria-label="Close">✕</button>
+  </div>
+
+  <div class="modal-body">
+    <div class="info-row">
+      <div class="label">Service</div>
+      <div class="value" id="serviceName">—</div>
+    </div>
+    <div class="info-row">
+      <div class="label">Amount</div>
+      <div class="value" id="servicePrice">—</div>
+    </div>
+
+    <hr class="line" />
+
+    <div class="copy-block">
+      <div class="copy-head">
+        <div>
+          <div class="label">IBAN</div>
+          <div class="value mono" id="ibanText">EG210037002708181020671629935</div>
+        </div>
+        <button class="btn ghost" type="button" id="copyIban">Copy</button>
+      </div>
+      <div class="status" id="ibanStatus"></div>
+    </div>
+
+    <div class="copy-block">
+      <div class="copy-head">
+        <div>
+          <div class="label">Account Number</div>
+          <div class="value mono" id="accText">1020671629935</div>
+        </div>
+        <button class="btn ghost" type="button" id="copyAcc">Copy</button>
+      </div>
+      <div class="status" id="accStatus"></div>
+    </div>
+
+    <p class="muted small note">
+      After transferring, send a screenshot of the transfer + your order details via WhatsApp or Email.
+    </p>
+  </div>
+
+  <div class="modal-actions">
+    <button class="btn ghost full" type="button" id="closeBtn2">Close</button>
+  </div>
+</div>
+
+<script>
+  // Footer year
+  document.getElementById("y").textContent = new Date().getFullYear();
+
+  // Modal elements
+  const overlay = document.getElementById("overlay");
+  const modal   = document.getElementById("modal");
+  const serviceName = document.getElementById("serviceName");
+  const servicePrice = document.getElementById("servicePrice");
+
+  const ibanStatus = document.getElementById("ibanStatus");
+  const accStatus  = document.getElementById("accStatus");
+
+  function openModal(name, price){
+    serviceName.textContent = name;
+    servicePrice.textContent = price;
+    ibanStatus.textContent = "";
+    accStatus.textContent = "";
+
+    overlay.classList.add("show");
+    modal.classList.add("show");
+    overlay.setAttribute("aria-hidden","false");
+    modal.setAttribute("aria-hidden","false");
+  }
+
+  function closeModal(){
+    overlay.classList.remove("show");
+    modal.classList.remove("show");
+    overlay.setAttribute("aria-hidden","true");
+    modal.setAttribute("aria-hidden","true");
+  }
+
+  // Buy buttons
+  document.querySelectorAll('a.btn.full[data-name]').forEach(btn=>{
+    btn.addEventListener("click", (e)=>{
+      e.preventDefault();
+      openModal(btn.dataset.name, btn.dataset.price);
+    });
+  });
+
+  // Close actions
+  document.getElementById("closeBtn").addEventListener("click", closeModal);
+  document.getElementById("closeBtn2").addEventListener("click", closeModal);
+  overlay.addEventListener("click", closeModal);
+  document.addEventListener("keydown", (e)=>{ if(e.key === "Escape") closeModal(); });
+
+  // Copy helpers
+  async function copyFrom(id, statusEl){
+    const text = document.getElementById(id).textContent.trim();
+    try{
+      await navigator.clipboard.writeText(text);
+      statusEl.textContent = "Copied ✅";
+    }catch(_){
+      const t = document.createElement("textarea");
+      t.value = text;
+      document.body.appendChild(t);
+      t.select();
+      document.execCommand("copy");
+      document.body.removeChild(t);
+      statusEl.textContent = "Copied ✅";
+    }
+    setTimeout(()=> statusEl.textContent = "", 1200);
+  }
+
+  document.getElementById("copyIban").addEventListener("click", ()=>copyFrom("ibanText", ibanStatus));
+  document.getElementById("copyAcc").addEventListener("click", ()=>copyFrom("accText", accStatus));
+</script>
 
 </body>
 </html>
